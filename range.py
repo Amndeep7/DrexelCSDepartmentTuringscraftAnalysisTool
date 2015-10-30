@@ -14,7 +14,7 @@ def get_arguments():
 	parser.add_argument('higher_threshold', type=float)
 	return parser.parse_args()
 
-# usage: python range.py "filepathtogradebook" "filepathtomajors" "assignmentcolumntitle" lowerthresholdinclusive higherthresholdinclusive
+# usage: python range.py "filepathtogradebook" "filepathtomajors" "filepathtoresults" "gradebook_studentid" "gradebook_assignment" "major_studentid" "major_name" lowerthresholdinclusive higherthresholdexclusive
 def main():
 	args = get_arguments()
 
@@ -48,6 +48,15 @@ def main():
 			met_threshold[majors[id]][0] += 1 if grades[id] >= args.lower_threshold and grades[id] < args.higher_threshold else 0
 	print(met_threshold)
 	
+	with open(args.range_results, 'w', newline='', encoding='utf-8') as f:
+		headers = ['Major', 'Total Students', 'Met Threshold', 'Percentage']
+		writer = csv.DictWriter(f, fieldnames=headers)
+		
+		writer.writeheader()
+		for major in met_threshold:
+			writer.writerow({headers[0]: major, headers[1]: met_threshold[major][1], headers[2]: met_threshold[major][0], headers[3]: "{0:f}".format(round(100*met_threshold[major][0]/met_threshold[major][1]))})
+			
+	print('done')	
 
 if __name__ == "__main__":
 	main()
