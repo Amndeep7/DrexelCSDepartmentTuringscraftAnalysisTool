@@ -1,15 +1,12 @@
 from random import randint
 import random
-import csv
-
-def main():
-	sampleData()
+import csv #importing the CSV module
 
 def sampleData():
-	idCreator = []
+	idCreator = [] 
 	majorCreator = ["BACS", "BSCS", "BASE", "BSSE", "XYZ"]
-	c = csv.writer(open("major.csv", "wb"))
-	c.writerow(["Student ID","Major"])
+	c = csv.writer(open("major.csv", "wb")) #create an object for writing
+	c.writerow(["Student ID","Major"]) #write the CSV file
 	c1 = csv.writer(open("gradebook.csv", "wb"))
 	c1.writerow(["Student ID", "A1 Grade", "A2 Grade", "A3 Grade"])
 
@@ -22,11 +19,6 @@ def sampleData():
 		grade1 = random.randint(50, 100)
 		grade2 = random.randint(50, 100)
 		grade3 = random.randint(50, 100)
-		#print studentId + " " + major
-		#print grade
 		idCreator = []
 		c.writerow([studentId,major])
 		c1.writerow([studentId,grade1,grade2,grade3])
-
-if __name__ == "__main__":
-    main()
