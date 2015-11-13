@@ -1,4 +1,4 @@
-from pylab import *
+from matplotlib.pylab import figure, axes, pie, title, savefig, clf
 
 # Define dictionaries for total students and students that met the threshold within each major
 totalStudents = {'BACS': 50, 'BSCS': 38, 'BASE': 5, 'BSSE': 10}
@@ -27,4 +27,9 @@ def createPieCharts(grade, total, met, minThreshold, maxThreshold):
         savefig("piechart_%s_%s_%s-%s.png" % (grade, major, minThreshold, maxThreshold), bbox_inches="tight")
         clf()
 
-createPieCharts("A2", totalStudents, metStudents, 80, 100)
+def main():
+    args = read_in_args()
+    # createPieCharts("A2", totalStudents, metStudents, 80, 100)
+
+if name == "main":
+    main()
