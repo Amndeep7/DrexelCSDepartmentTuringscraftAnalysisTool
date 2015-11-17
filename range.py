@@ -1,9 +1,9 @@
-import argparse
-import csv
+from argparse import ArgumentParser
+from csv import DictReader, DictWriter
 
 # usage: python range.py "filepathtogradebook" "filepathtomajors" "filepathtoresults" "gradebook_studentid" "gradebook_assignment" "major_studentid" "major_name" lowerthresholdinclusive higherthresholdexclusive [--verbose]
 def get_arguments():
-	parser = argparse.ArgumentParser()
+	parser = ArgumentParser()
 	parser.add_argument('gradebook')
 	parser.add_argument('majorlist')
 	parser.add_argument('range_results')
@@ -18,7 +18,7 @@ def get_arguments():
 
 def read_in_data(source, id, data, repository, wrapper=lambda a: a):
 	with open(source, newline='', encoding='utf-8') as f:
-		reader = csv.DictReader(f)
+		reader = DictReader(f)
 		for row in reader:
 			repository[row[id]] = wrapper(row[data])
 
@@ -60,7 +60,7 @@ def main():
 	# print to csv
 	with open(args.range_results, 'w', newline='', encoding='utf-8') as f:
 		headers = ['Major', 'Total Students', 'Met Threshold', 'Percentage']
-		writer = csv.DictWriter(f, fieldnames=headers)
+		writer = DictWriter(f, fieldnames=headers)
 		
 		writer.writeheader()
 		for major in met_threshold:
