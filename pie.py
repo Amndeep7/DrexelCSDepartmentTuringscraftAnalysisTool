@@ -1,9 +1,18 @@
 from matplotlib.pylab import figure, axes, pie, title, savefig, clf
+import argparse
 import csv
 import sys
 
 #To run from command line
 #   python pie.py CSV_FileName Name_Of_Grade Minimum_Threshold Maximum_Threshold
+
+def get_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('results')
+    parser.add_argument('grade_column')
+    parser.add_argument('lower_threshold', type=float)
+    parser.add_argument('higher_threshold', type=float)
+    return parser.parse_args()
 
 # Read CSV to define dictionaries for total students and students that met the threshold within each major
 def read_csv(filename):
@@ -40,8 +49,9 @@ def main():
     #   sys.argv[2] = Name of Grade
     #   sys.argv[3] = Minimum Threshold value
     #   sys.argv[4] = Maximum Threshold value
-    total_students, met_students = read_csv(sys.argv[1])
-    create_piecharts(sys.argv[2], total_students, met_students, sys.argv[3], sys.argv[4])
+    args = get_arguments()
+    total_students, met_students = read_csv(args.results)
+    create_piecharts(args.grade_column, total_students, met_students, args.lower_threshold, args.higher_threshold)
 
 if __name__ == "__main__":
     main()
