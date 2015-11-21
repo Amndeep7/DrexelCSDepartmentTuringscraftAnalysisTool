@@ -4,9 +4,9 @@ import csv
 def generate_sample_data():
 	id_creator = [] 
 	major_creator = ["BACS", "BSCS", "BASE", "BSSE", "XYZ"]
-	c = csv.writer(open("major.csv", "wb")) #create an object for writing
+	c = csv.writer(open("major.csv", "w")) #create an object for writing
 	c.writerow(["Student ID", "Major"]) #write the CSV file
-	c1 = csv.writer(open("gradebook.csv", "wb"))
+	c1 = csv.writer(open("gradebook.csv", "w"))
 	c1.writerow(["Student ID", "A1 Grade", "A2 Grade", "A3 Grade"])
 
 	for x in range(50):
