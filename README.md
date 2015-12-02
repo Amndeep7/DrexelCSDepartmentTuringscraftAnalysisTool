@@ -14,8 +14,8 @@ Create a tool to automate data analysis, primarily to check if students meet a m
 
 ##Dependencies:
 
-- Python3
-- matplotlib
+- Python (compatible with 3.5)
+- matplotlib (compatible with 1.5.0)
 
 ##Usage
 
