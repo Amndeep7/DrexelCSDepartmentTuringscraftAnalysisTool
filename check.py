@@ -62,13 +62,13 @@ def main():
 	
 	# print to csv
 	with open(args.check_results, 'w', newline='', encoding='utf-8') as f:
-		headers = ['Email'] + problems + ['Total']
+		headers = ['Email'] + problems + ['Total Completed', 'Percentage Completed']
 		writer = csv.DictWriter(f, fieldnames=headers)
 		
 		writer.writeheader()
 		for name in names:
 			total = checks[name].count('c')
-			values = [name] + checks[name] + [total]
+			values = [name] + checks[name] + [total, total/len(checks[name])]
 			writer.writerow(dict(zip(headers, values)))
 
 if __name__ == "__main__":
