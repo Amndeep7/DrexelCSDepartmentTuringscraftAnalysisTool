@@ -4,49 +4,18 @@
 
 Amndeep Singh Mann - asm357@drexel.edu
 	
-Mansoor Siddiqui - mis43@drexel.edu
-	
-Ryan Efendy - re88@drexel.edu
-
 ##Purpose:
 
-Create a tool to automate data analysis, primarily to check if students meet a minimum grade, for the Drexel CS department as commissioned by Professor William M. Mongan.
+Create a tool to read in CSV files holding a roster of students from BBLearn, a TuringsCraft roster, and a list of TuringsCraft problem ids so as to verify if the student has successfully done the problems specified.
 
 ##Dependencies:
 
-- Python (compatible with 3.5)
-- matplotlib (compatible with 1.5.0)
+- Python (compatible with 3.5 on Windows 10 - other versions of Python and operating systems untested)
 
 ##Usage
 
-####To generate sample data:
-
-python sample_data.py "filepathtogradebook" "filepathtomajorslist" sample_data_size number_of_different_major_types number_of_different_assignments
+python check.py "filepathtobblearnroster" "filepathtoturingscraftdata" "filepathtoproblemslist" "filepathtoresults" "roster_studentid" "turingscraft_studentid" "problems_id" [-s "sectionid" sectionnumber]
 
 =>
 
-python sample_data.py gradebook.csv major.csv 50 4 3
-
-####To analyze data:
-
-python range.py "filepathtogradebook" "filepathtomajorslist" "filepathtoresults" "gradebook_studentid" "gradebook_assignment" "major_studentid" "major_name" lowerthresholdinclusive higherthresholdexclusive [--verbose]
-
-=>
-
-python range.py gradebook.csv major.csv results.csv "Student ID" L2 "Student ID" BSCS 70 100.1  --verbose
-
-####To create piecharts representing the data:
-
-python pie.py "filepathtoresults" "gradebook_assignment" lowerthresholdinclusive higherthresholdexclusive
-
-=>
-
-python pie.py results.csv L2 70 100.1
-
-####To combine the analysis and piechart functionality into one script:
-
-python main.py "filepathtogradebook" "filepathtomajorslist" "filepathtoresults" "gradebook_studentid" "gradebook_assignment" "major_studentid" "major_name" lowerthresholdinclusive higherthresholdexclusive
-
-=>
-
-python main.py gradebook.csv major.csv results.csv "Student ID" L2 "Student ID" BSCS 70 100.1
+python.exe .\check.py ..\roster-all-2016-01-27-15-12-34.csv ..\turingscraft-2016-01-27.csv ..\problems-pl2.csv ..\results-65-pl2.csv Username Email Problems -s "Lab Section [Total Pts: 70] |989531" 65
