@@ -1,4 +1,4 @@
-# DrexelCSDepartmentAnalysisTool
+# Drexel CS Department Analysis Tool
 
 ##Author:
 
