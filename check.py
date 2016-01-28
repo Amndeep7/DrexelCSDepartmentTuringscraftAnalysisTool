@@ -36,6 +36,7 @@ def read_in_data_to_dictionary(source, id, data, repository):
 def identify_headers(source, partials):
 	with open(source, newline='', encoding='utf-8') as f:
 		line = f.readline().split(',')
+		line = list(map(lambda l: l.strip(), line))
 		conversion = list()
 		for header in line:
 			convert = header.split('-')
