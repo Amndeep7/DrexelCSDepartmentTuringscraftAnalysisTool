@@ -1,6 +1,6 @@
 # DrexelCSDepartmentAnalysisTool
 
-##Authors:
+##Author:
 
 Amndeep Singh Mann - asm357@drexel.edu
 	
